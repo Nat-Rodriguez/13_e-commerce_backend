@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "node": "^21.1.0",
+    "sequelize": "^6.34.0"
+  }
+}
