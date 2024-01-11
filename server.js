@@ -6,6 +6,7 @@ var mysql = require('mysql');
 
 var connection = mysql.createConnection({
     host: 'localhost',
+    port: 3306,
     user: 'root',
     password: 'fabiandme3'
 });
@@ -18,7 +19,14 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(routes);
 
+db.once('open', () => {
+    app.listen(PORT, () => {
+      console.log(`API server running on port ${PORT}!`);
+    });
+  });
+  
+
 // sync sequelize models to the database, then turn on the server
-app.listen(PORT, () => {
-  console.log(`App listening on port ${PORT}!`);
-});
+// app.listen(PORT, () => {
+//   console.log(`App listening on port ${PORT}!`);
+// });
