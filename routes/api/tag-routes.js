@@ -7,20 +7,20 @@ router.get('/', (req, res) => {
   // find all tags
   // be sure to include its associated Product data
   Tag.findAll({
-    include: [
-      {
-        model: Product,
-        through: ProductTag,
-      },
-    ],
-    include: [
-      Category,
-      {
-        model: Tag,
-        through: ProductTag,
-        as: "product_tags"
-      },
-    ],
+    // include: [
+    //   {
+    //     model: Product,
+    //     through: ProductTag,
+    //   },
+    // ],
+    // include: [
+    //   Category,
+    //   {
+    //     model: Tag,
+    //     through: ProductTag,
+    //     as: "product_tags"
+    //   },
+    // ],
   })
     .then((tags) => res.status(200).json(tags))
     .catch((err) => res.status(500).json(err));
@@ -33,12 +33,12 @@ router.get('/:id', (req, res) => {
     where: {
       id: req.params.id,
     },
-    include: [
-      {
-        model: Product,
-        through: ProductTag,
-      },
-    ],
+    // include: [
+    //   {
+    //     model: Product,
+    //     through: ProductTag,
+    //   },
+    // ],
   })
     .then((tag) => res.status(200).json(tag))
     .catch((err) => res.status(404).json(err));
